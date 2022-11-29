@@ -1,65 +1,73 @@
-#include <stdlib.h>//system
-#include <vector>//vector
-#include <iostream>//cout  endl
-#include <string>//string
+#include <stdlib.h>
+#include <list>//listã‚³ãƒ³ãƒ†ãƒŠ
+#include <iterator>
+#include <string>
+#include <iostream>
+
 using namespace std;
 
 int main() 
 {
-	//vector<int> b;//intŒ^‚ğ“ü‚ê‚éL‚Ñk‚İ”z—ñ
+#pragma region
+	/*std::list<int>lst(33, 4);*/
+	//list<int>lst{114, 514, 364};//åˆæœŸè¨­å®šãƒªã‚¹ãƒˆ
 
-	//b.push_back(40);
-	//b.push_back(50);
-	//b.push_back(77);
-
-	//int size = b.size();
-	//for (int i = 0; i < size; i++)
+	//lst.push_front(7);
+	//lst.push_back(777);
+	//for (int i = 0; i < 5; i++)
 	//{
-	//	printf("%d\n", b[i]);
+	//	lst.push_front(i);
 	//}
-	//printf("---\n");
-
-	//b.pop_back();
-	//size = b.size();
-	//for (int i = 0; i < size; i++)
+	//for (int i = 0; i < 5; i++)
 	//{
-	//	printf("%d\n", b[i]);
+	//	lst.push_back(i);
 	//}
+#pragma endregion
 
+	list<const char*>Station={"Tokyo","Kanda","Akihabara","Okachimachi","Ueno","Uguisudani",
+						"Nippori","Tabata","Komagome","Sugamo","Otsuka" ,
+						"Ikebukuro","Mejiro","Takadanobaba","Shin-Okubo","Shinjuku",
+						"Yoyogi","Harajuku","Shibuya","Ebisu","Meguro","Gotanda","Osaki",
+						"Shinagawa","Tamachi","Hamamatsutyo","Shinbashi",
+						"Yurakutyo"};
 
-	//vector<int>e = { 1,2,3 };
-
-	//vector<int>::iterator it;
-
-	//it = e.begin();
-
-	//cout << *it << endl;
-
-	//it++;
-
-	//cout << *it << endl;
-
-	//for (it = e.begin(); it != e.end(); it++)
-	//{
-	//	cout << *it << endl;
-	//}
-
-	vector<string>f = { "ƒ[ƒ\ƒ“","ƒtƒ@ƒ~ƒ}","ƒZƒuƒ“" };
-
-	for (vector<string>::iterator it_f = f.begin(); it_f != f.end(); it_f++)//‘S—v‘f‚ğ‚ğ‡‚É‚½‚Ç‚é
+	cout << "---1970å¹´---\n";
+	for (auto itr = Station.begin(); itr != Station.end(); ++itr)
 	{
-		cout << *it_f << endl;
+		printf("%s\n", *itr);
 	}
 
-	cout << "---" << endl;
-
-	f.erase(f.begin() + 1);
-	for (vector<string>::iterator it_f = f.begin(); it_f != f.end(); it_f++)//‘S—v‘f‚ğ‚ğ‡‚É‚½‚Ç‚é
+	//è¥¿æ—¥æš®é‡Œã‚’è¿½åŠ 
+	for (auto itr = Station.begin(); itr != Station.end(); ++itr)
 	{
-		cout << *it_f << endl;
+		if (*itr == "Tabata")
+		{
+			itr = Station.insert(itr,"Nishinippori");
+			itr++;
+		}
+	}
+	
+	cout << "---2019å¹´---\n";
+	for (auto itr = Station.begin(); itr != Station.end(); ++itr)
+	{
+		printf("%s\n", *itr);
 	}
 
+	//é«˜è¼ªã‚²ãƒ¼ãƒˆã‚¦ã‚§ã‚¤ã‚’è¿½åŠ 
+	for (auto itr = Station.begin(); itr != Station.end(); ++itr)
+	{
+		if (*itr == "Tamachi")
+		{
+			itr = Station.insert(itr, "Takanawa Gateway");
+			itr++;
+		}
+	}
 
-	system("pause");
+	cout << "---2022å¹´---\n";
+	for (auto itr = Station.begin(); itr != Station.end(); ++itr)
+	{
+		printf("%s\n", *itr);
+	}
+
 	return 0;
 }
